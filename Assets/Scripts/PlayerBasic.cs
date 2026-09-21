@@ -24,4 +24,17 @@ public class PlayerBasic : MonoBehaviour
         //increase scale of hoard and player sprites based on hoard_size
     }
 
+    public void Attack(int attackIndex)
+    {
+        switch (attackIndex)
+        {
+            case (1):
+                //Attack 1 - Swipe
+                break;
+            case (2):
+                //Attack 2 - Fire Breath
+                break;
+        }
+
+    }
 }

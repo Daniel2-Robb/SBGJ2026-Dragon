@@ -20,7 +20,7 @@ public class EnemyBasic : MonoBehaviour
     {
         if(health <= 0)
         {
-            manager.villagerKilled(loot);
+            manager.VillagerKilled(loot);
         }
     }
 

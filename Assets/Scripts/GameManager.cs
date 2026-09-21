@@ -58,8 +58,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void villagerKilled (int loot) 
+    public void VillagerKilled (int loot) 
     {
         player.HoardIncrease(loot);
+    }
+
+    public void PlayerAttackCall(int attackIndex)
+    {
+        player.Attack(attackIndex);
     }
 }
