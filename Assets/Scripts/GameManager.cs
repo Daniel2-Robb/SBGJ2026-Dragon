@@ -7,15 +7,18 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    //variables
     public GameState state;
     private bool gameStateChanged = false;
     [SerializeField] GameObject player_ui;
     [SerializeField] GameObject pause_menu;
+    PlayerBasic player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //get player object
+        player = FindAnyObjectByType<PlayerBasic>();
     }
 
     // Update is called once per frame
@@ -53,5 +56,10 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void villagerKilled (int loot) 
+    {
+        player.HoardIncrease(loot);
     }
 }
