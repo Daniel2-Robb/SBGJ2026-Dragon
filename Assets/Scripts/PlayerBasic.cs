@@ -22,6 +22,7 @@ public class PlayerBasic : MonoBehaviour
     public void HoardIncrease(int increase)
     {
         //increase scale of hoard and player sprites based on hoard_size
+        hoard_size += increase;
     }
 
     public void Attack(int attackIndex)

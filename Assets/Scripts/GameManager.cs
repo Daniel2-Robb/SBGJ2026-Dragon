@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     public void VillagerKilled (int loot) 
     {
         player.HoardIncrease(loot);
+        Debug.Log("Enemy Killed");
     }
 
     public void PlayerAttackCall(int attackIndex)

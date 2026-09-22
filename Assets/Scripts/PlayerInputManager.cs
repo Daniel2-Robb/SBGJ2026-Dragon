@@ -1,0 +1,40 @@
+using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerInputManager : MonoBehaviour
+{
+    GameManager manager;
+    //[SerializeField] private InputActionAsset playerInput;
+    public InputActionReference kill;
+
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        //find game manager object
+        manager = FindAnyObjectByType<GameManager>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void OnEnable()
+    {
+        kill.action.started += Kill;
+    }
+
+    private void OnDisable()
+    {
+        kill.action.started -= Kill;
+    }
+
+    private void Kill(InputAction.CallbackContext context)
+    {
+        //Debug.Log("Action completed");
+        manager.VillagerKilled(5);
+    }
+}
