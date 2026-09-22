@@ -5,6 +5,7 @@ public class PlayerBasic : MonoBehaviour
     //Variables
     GameManager manager;
     public int hoard_size = 0;
+    [SerializeField] BoxCollider2D a1_hurt;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,6 +32,9 @@ public class PlayerBasic : MonoBehaviour
         {
             case (1):
                 //Attack 1 - Swipe
+                a1_hurt.gameObject.SetActive(true);
+                //After X time, disable a1_hurt
+
                 break;
             case (2):
                 //Attack 2 - Fire Breath

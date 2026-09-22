@@ -7,6 +7,10 @@ public class EnemyBasic : MonoBehaviour
     int health = 10;
     int loot = 10;
 
+    public Rigidbody2D rb;
+    public float moveSpeed;
+    //private Vector2 moveDirection; //find out what default value needs to be for right
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +25,16 @@ public class EnemyBasic : MonoBehaviour
         if(health <= 0)
         {
             manager.VillagerKilled(loot);
+            gameObject.SetActive(false);
         }
+
+        rb.linearVelocity = new Vector2(1 *  moveSpeed, 0);
     }
 
+    public void UpdateHealth(int damage)
+    {
+        health -= damage;
+
+        Debug.Log("Taken " + damage + " damage");
+    }
 }

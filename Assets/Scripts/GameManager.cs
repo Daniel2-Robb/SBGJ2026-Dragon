@@ -58,6 +58,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Pause()
+    {
+        switch (state)
+        {
+            case GameState.GAMEPLAY:
+                state = GameState.PAUSE;
+                gameStateChanged = true;
+
+                Debug.Log("Paused");
+
+                break;
+
+            case GameState.PAUSE:
+                state = GameState.GAMEPLAY;
+                gameStateChanged = true;
+
+                Debug.Log("Unpaused");
+
+                break;
+
+
+        }
+    }
+
     public void VillagerKilled (int loot) 
     {
         player.HoardIncrease(loot);

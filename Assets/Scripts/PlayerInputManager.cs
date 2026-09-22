@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 public class PlayerInputManager : MonoBehaviour
 {
     GameManager manager;
-    //[SerializeField] private InputActionAsset playerInput;
+    PlayerBasic player;
+    public InputActionReference pause;
     public InputActionReference kill;
     public InputActionReference attack1;
     public InputActionReference attack2;
@@ -26,16 +27,24 @@ public class PlayerInputManager : MonoBehaviour
 
     private void OnEnable()
     {
+        pause.action.started += Pause;
         kill.action.started += Kill;
-        attack1.action.started += Attack(1);
-        attack2.action.started += Attack(2);
+        attack1.action.started += Attack1;
+        attack2.action.started += Attack2;
     }
+
 
     private void OnDisable()
     {
+        pause.action.started -= Pause;
         kill.action.started -= Kill;
-        attack1.action.started -= Attack(1);
-        attack2.action.started -= Attack(2);
+        attack1.action.started -= Attack1;
+        attack2.action.started -= Attack2;
+    }
+
+    private void Pause(InputAction.CallbackContext context)
+    {
+        manager.Pause();
     }
 
     private void Kill(InputAction.CallbackContext context)
@@ -44,12 +53,14 @@ public class PlayerInputManager : MonoBehaviour
         manager.VillagerKilled(5);
     }
 
-    private Action<InputAction.CallbackContext> Attack(int attackIndex)
-    {
-        manager.PlayerAttackCall(attackIndex);
 
-        //throw new NotImplementedException();
-        return null;
+    private void Attack1(InputAction.CallbackContext context)
+    {
+        player.Attack(1);
+    }
+    private void Attack2(InputAction.CallbackContext context)
+    {
+        player.Attack(2);
     }
 
 }
