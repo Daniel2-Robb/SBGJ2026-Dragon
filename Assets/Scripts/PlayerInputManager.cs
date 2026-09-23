@@ -17,6 +17,7 @@ public class PlayerInputManager : MonoBehaviour
     {
         //find game manager object
         manager = FindAnyObjectByType<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -56,11 +57,11 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Attack1(InputAction.CallbackContext context)
     {
-        player.Attack(1);
+        manager.PlayerAttackCall(1);
     }
     private void Attack2(InputAction.CallbackContext context)
     {
-        player.Attack(2);
+        manager.PlayerAttackCall(2);
     }
 
 }

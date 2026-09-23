@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3184124780989501456
 Transform:
   m_ObjectHideFlags: 0
@@ -243,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b9a3999b605664b950218268b14035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputManager
+  pause: {fileID: 0}
   kill: {fileID: 1883533044214302365, guid: 3818bc8d377e0b94fbbb843a487de77e, type: 3}
   attack1: {fileID: 6395713218207110686, guid: 3818bc8d377e0b94fbbb843a487de77e, type: 3}
   attack2: {fileID: 4558355992608496231, guid: 3818bc8d377e0b94fbbb843a487de77e, type: 3}
