@@ -35,7 +35,6 @@ public class PlayerBasic : MonoBehaviour
             case (1):
                 //Attack 1 - Swipe
                 a1_hurt.gameObject.SetActive(true);
-                //After X time, disable a1_hurt
 
                 break;
             case (2):

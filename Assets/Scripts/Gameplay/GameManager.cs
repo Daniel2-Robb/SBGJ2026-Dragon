@@ -18,6 +18,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        //Set scene to be in gameplay rather than any other state on startup
+        state = GameState.GAMEPLAY;
+        //Set timescale so that physics interctions occur
+        Time.timeScale = 1.0f;
+        //Turn off pause menu, turn on main UI
+        pause_menu.SetActive(false);
+        player_ui.SetActive(true);
+
         //get player object
         player = FindAnyObjectByType<PlayerBasic>();
         //get spawner object
@@ -52,7 +60,7 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 1.0f;
 
                     //Turn off pause menu, turn on main UI
-                    //pause_menu.SetActive(false);
+                    pause_menu.SetActive(false);
                     player_ui.SetActive(true);
 
                     break;
@@ -62,7 +70,7 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 0.0f;
 
                     //Turn off pause menu, turn on main UI
-                    //pause_menu.SetActive(true);
+                    pause_menu.SetActive(true);
                     player_ui.SetActive(false);
                     break;
             }

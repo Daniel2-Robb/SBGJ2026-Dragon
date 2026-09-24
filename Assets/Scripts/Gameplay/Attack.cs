@@ -1,12 +1,19 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
     BoxCollider2D hurt_box;
 
-    [Range(5, 25)]
+    [UnityEngine.Range(5, 25)]
     [Tooltip("Damage of the attack")]
     [SerializeField] int damage;
+
+    float timer;
+    bool timer_active = false;
+
+    [UnityEngine.Range(0, 10)]
+    [SerializeField] float attackLength;
 
     private void Awake()
     {
@@ -19,10 +26,27 @@ public class Attack : MonoBehaviour
         
     }
 
+    private void OnEnable()
+    {
+        timer = attackLength;
+        timer_active = true;
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (timer_active) 
+        {
+            timer -= Time.deltaTime;
+            //Debug.Log("Timer: " + timer);
+
+            if(timer <= 0)
+            {
+                timer_active = false;
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,6 +55,5 @@ public class Attack : MonoBehaviour
 
         EnemyBasic enemy = collision.GetComponent<EnemyBasic>();
         enemy.UpdateHealth(damage);
-        gameObject.SetActive(false);
     }
 }
