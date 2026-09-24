@@ -932,7 +932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A game about a dragon rebuilding its hoard from Zero
+  m_text: A game about a dragon building its hoard from Zero
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19614fb35f5596b49b174a4ce12e6004, type: 2}
   m_sharedMaterial: {fileID: -4849005536128803213, guid: 19614fb35f5596b49b174a4ce12e6004, type: 2}
