@@ -14,15 +14,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject pause_menu;
     PlayerBasic player;
     Spawner spawner;
-    GameplayUI gameplayUI;
+    [SerializeField] GameplayUI gameplayUI;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
         //get player object
         player = FindAnyObjectByType<PlayerBasic>();
         //get spawner object
         spawner = FindAnyObjectByType<Spawner>();
+        //get gameplay UI object
+        gameplayUI = FindAnyObjectByType<GameplayUI>();
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -46,7 +53,7 @@ public class GameManager : MonoBehaviour
 
                     //Turn off pause menu, turn on main UI
                     //pause_menu.SetActive(false);
-                    //player_ui.SetActive(true);
+                    player_ui.SetActive(true);
 
                     break;
 
@@ -56,7 +63,7 @@ public class GameManager : MonoBehaviour
 
                     //Turn off pause menu, turn on main UI
                     //pause_menu.SetActive(true);
-                    //player_ui.SetActive(false);
+                    player_ui.SetActive(false);
                     break;
             }
         }

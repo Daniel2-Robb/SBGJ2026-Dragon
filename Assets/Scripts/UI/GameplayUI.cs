@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameplayUI : MonoBehaviour
 {
-    [SerializeField] Text hoard_size_text;
+    [SerializeField] TMP_Text hoard_size_text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

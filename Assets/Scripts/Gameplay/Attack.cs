@@ -31,6 +31,6 @@ public class Attack : MonoBehaviour
 
         EnemyBasic enemy = collision.GetComponent<EnemyBasic>();
         enemy.UpdateHealth(damage);
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
