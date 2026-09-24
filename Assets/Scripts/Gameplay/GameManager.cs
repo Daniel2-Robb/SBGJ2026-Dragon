@@ -13,12 +13,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player_ui;
     [SerializeField] GameObject pause_menu;
     PlayerBasic player;
+    Spawner spawner;
+    GameplayUI gameplayUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //get player object
         player = FindAnyObjectByType<PlayerBasic>();
+        //get spawner object
+        spawner = FindAnyObjectByType<Spawner>();
     }
 
     // Update is called once per frame
@@ -60,12 +64,13 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
+        //switches between pause menu and gameplay
         switch (state)
         {
             case GameState.GAMEPLAY:
                 state = GameState.PAUSE;
                 gameStateChanged = true;
-
+                //Turn on pause UI, turn off gameplay UI
                 Debug.Log("Paused");
 
                 break;
@@ -73,7 +78,7 @@ public class GameManager : MonoBehaviour
             case GameState.PAUSE:
                 state = GameState.GAMEPLAY;
                 gameStateChanged = true;
-
+                //Turn off pause UI, turn on gameplay UI
                 Debug.Log("Unpaused");
 
                 break;
@@ -86,10 +91,22 @@ public class GameManager : MonoBehaviour
     {
         player.HoardIncrease(loot);
         Debug.Log("Enemy Killed");
+        spawner.spawn();
     }
 
     public void PlayerAttackCall(int attackIndex)
     {
         player.Attack(attackIndex);
+    }
+
+    public void UIUpdate(string element, int hoard)
+    {
+        switch (element)
+        {
+            case ("Hoard"):
+                gameplayUI.HoardUpdate(hoard);
+                break;
+        }
+
     }
 }

@@ -3,6 +3,9 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     BoxCollider2D hurt_box;
+
+    [Range(5, 25)]
+    [Tooltip("Damage of the attack")]
     [SerializeField] int damage;
 
     private void Awake()
@@ -28,5 +31,6 @@ public class Attack : MonoBehaviour
 
         EnemyBasic enemy = collision.GetComponent<EnemyBasic>();
         enemy.UpdateHealth(damage);
+        //gameObject.SetActive(false);
     }
 }

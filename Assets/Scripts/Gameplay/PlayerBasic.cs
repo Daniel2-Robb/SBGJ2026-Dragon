@@ -4,7 +4,7 @@ public class PlayerBasic : MonoBehaviour
 {
     //Variables
     GameManager manager;
-    public int hoard_size = 0;
+    int hoard_size = 0;
     [SerializeField] BoxCollider2D a1_hurt;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -12,6 +12,7 @@ public class PlayerBasic : MonoBehaviour
     {
         //get game manager object
         manager = FindAnyObjectByType<GameManager>();
+        manager.UIUpdate("Hoard", hoard_size);
     }
 
     // Update is called once per frame
@@ -24,6 +25,7 @@ public class PlayerBasic : MonoBehaviour
     {
         //increase scale of hoard and player sprites based on hoard_size
         hoard_size += increase;
+        manager.UIUpdate("Hoard", hoard_size);
     }
 
     public void Attack(int attackIndex)

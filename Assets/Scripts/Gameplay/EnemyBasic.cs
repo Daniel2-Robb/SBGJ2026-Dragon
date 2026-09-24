@@ -17,17 +17,20 @@ public class EnemyBasic : MonoBehaviour
     {
         //find game manager object
         manager = FindAnyObjectByType<GameManager>();
+
+        gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+    }
+
+    private void OnEnable()
+    {
+        //find game manager object
+        manager = FindAnyObjectByType<GameManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0)
-        {
-            manager.VillagerKilled(loot);
-            gameObject.SetActive(false);
-        }
-
         rb.linearVelocity = new Vector2(1 *  moveSpeed, 0);
     }
 
@@ -36,5 +39,13 @@ public class EnemyBasic : MonoBehaviour
         health -= damage;
 
         Debug.Log("Taken " + damage + " damage");
+
+
+        if (health <= 0)
+        {
+            manager.VillagerKilled(loot);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
     }
 }
