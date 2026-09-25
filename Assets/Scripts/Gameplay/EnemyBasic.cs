@@ -9,7 +9,7 @@ public class EnemyBasic : MonoBehaviour
 
     public Rigidbody2D rb;
     public float moveSpeed;
-    //private Vector2 moveDirection; //find out what default value needs to be for right
+    public string direction = "Right";
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,7 +29,14 @@ public class EnemyBasic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = new Vector2(1 *  moveSpeed, 0);
+        if (direction == "Right")
+        {
+            rb.linearVelocity = new Vector2(1 * moveSpeed, 0);
+        }
+        else if (direction == "Left")
+        {
+            rb.linearVelocity = new Vector2(-1 * moveSpeed, 0);
+        }
     }
 
     public void UpdateHealth(int damage)
@@ -44,6 +51,26 @@ public class EnemyBasic : MonoBehaviour
             manager.VillagerKilled(loot);
             //gameObject.SetActive(false);
             Destroy(gameObject);
+        }
+    }
+
+    public void UpdateLoot(int money)
+    {
+        loot += money;
+    }
+
+    public void ChangeDirection()
+    {
+        switch (direction)
+        {
+            case ("Right"):
+                direction = "Left";
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                break;
+            case ("Left"):
+                direction = "Right";
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                break;
         }
     }
 }

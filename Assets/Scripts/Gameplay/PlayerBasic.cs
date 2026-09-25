@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBasic : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class PlayerBasic : MonoBehaviour
         //increase scale of hoard and player sprites based on hoard_size
         hoard_size += increase;
         manager.UIUpdate("Hoard", hoard_size);
+
+        if (hoard_size <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     public void Attack(int attackIndex)
@@ -43,4 +49,14 @@ public class PlayerBasic : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Money Stolen");
+        HoardIncrease(-2);
+        EnemyBasic enemy = collision.GetComponent<EnemyBasic>();
+        enemy.UpdateLoot(2);
+        enemy.ChangeDirection();
+    }
+
 }
