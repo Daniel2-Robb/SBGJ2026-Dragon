@@ -11,6 +11,8 @@ public class EnemyBasic : MonoBehaviour
     public float moveSpeed;
     public string direction = "Right";
 
+    bool escaping = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +39,12 @@ public class EnemyBasic : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(-1 * moveSpeed, 0);
         }
+
+        if (!GetComponent<Renderer>().isVisible && escaping)
+        {
+            manager.VillagerKilled(0);
+            Destroy(gameObject);
+        }
     }
 
     public void UpdateHealth(int damage)
@@ -49,7 +57,6 @@ public class EnemyBasic : MonoBehaviour
         if (health <= 0)
         {
             manager.VillagerKilled(loot);
-            //gameObject.SetActive(false);
             Destroy(gameObject);
         }
     }
@@ -66,10 +73,12 @@ public class EnemyBasic : MonoBehaviour
             case ("Right"):
                 direction = "Left";
                 gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                escaping = true;
                 break;
             case ("Left"):
                 direction = "Right";
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                escaping = false;
                 break;
         }
     }

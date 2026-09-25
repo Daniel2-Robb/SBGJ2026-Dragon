@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
     public void VillagerKilled (int loot) 
     {
         player.HoardIncrease(loot);
+        player.GameEnd();
         Debug.Log("Enemy Killed");
         spawner.spawn();
     }
@@ -123,5 +124,9 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void GameEnd()
+    {
     }
 }

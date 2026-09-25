@@ -26,12 +26,16 @@ public class PlayerBasic : MonoBehaviour
     {
         //increase scale of hoard and player sprites based on hoard_size
         hoard_size += increase;
-        manager.UIUpdate("Hoard", hoard_size);
 
-        if (hoard_size <= 0)
+        if (hoard_size >= 0)
         {
-            SceneManager.LoadScene("GameOver");
+            manager.UIUpdate("Hoard", hoard_size);
         }
+        else
+        {
+            manager.UIUpdate("Hoard", 0);
+        }
+
     }
 
     public void Attack(int attackIndex)
@@ -57,6 +61,14 @@ public class PlayerBasic : MonoBehaviour
         EnemyBasic enemy = collision.GetComponent<EnemyBasic>();
         enemy.UpdateLoot(2);
         enemy.ChangeDirection();
+    }
+
+    public void GameEnd()
+    {
+        if (hoard_size <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
 }
