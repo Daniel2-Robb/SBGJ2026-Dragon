@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 69ca11ce6fb9a3d4ba5dcec336991919
+guid: 8661da348d0e92f409e48a95f75ea026
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5094880498733212438
-    second: WhiteHurtbox_0
+      213: -412609877855633360
+    second: ClawHurtbox_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WhiteHurtbox_0
+      name: ClawHurtbox_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1069
-        height: 142
+        y: 11
+        width: 467
+        height: 348
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aec11f32e295b49b0800000000000000
-      internalID: -5094880498733212438
+      spriteID: 030099f808d164af0800000000000000
+      internalID: -412609877855633360
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      WhiteHurtbox_0: -5094880498733212438
+      ClawHurtbox_0: -412609877855633360
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

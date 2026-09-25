@@ -5,7 +5,7 @@ public class EnemyBasic : MonoBehaviour
     //variables
     GameManager manager;
     int health = 10;
-    int loot = 10;
+    int loot = 5;
 
     public Rigidbody2D rb;
     public float moveSpeed;
@@ -17,8 +17,6 @@ public class EnemyBasic : MonoBehaviour
     {
         //find game manager object
         manager = FindAnyObjectByType<GameManager>();
-
-        gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     private void OnEnable()
